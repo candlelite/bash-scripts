@@ -40,7 +40,7 @@ traitimage () {
     # créer la mignature "th_image.jpg
     # si le thumbnail de l'image n'existe pas déjà
     # ou alors que le thumbnail est plus ancien que l'image originale
-    [ ! -e "$repertoire/genegal/th_${image##*/}" -o "$repertoire/genegal/th_${image##*/}" -ot "$image" ] && convert "$image" -resize 200x200 "$repertoire/genegal/th_${image##*/}"
+    [ ! -e "$repertoire/genegal/th_${image##*/}" -o "$repertoire/genegal/th_${image##*/}" -ot "$image" ] && convert "$image" -resize 1024x1024 -strip -interlace Plane -quality 75% "$repertoire/genegal/th_${image##*/}"
     # avec identify de ImageMagic, on peut avoir la vraie date originale, mais ça ne fonction pas avec les photos faites avec Android
     # echo '<a href="'../$image'"><img src="'$repertoire/genegal/th_${image##*/}'" title="'`identify -verbose $image | grep DateTimeOriginal`'" /></a>' >> "$sortie"
     # recherche de la date d'un fichier avec find et cut
