@@ -40,13 +40,13 @@ traitimage () {
     # créer la mignature "th_image.jpg
     # si le thumbnail de l'image n'existe pas déjà
     # ou alors que le thumbnail est plus ancien que l'image originale
-    [ ! -e "$repertoire/genegal/th_${image##*/}" -o "$repertoire/genegal/th_${image##*/}" -ot "$image" ] && convert "$image" -resize 1024x1024 -strip -interlace Plane -quality 75% "$repertoire/genegal/th_${image##*/}"
+    [ ! -e "$repertoire/genegal/`date -r $image '+%Y-%m-%d %H-%M-%S'`.jpg" -o "$repertoire/genegal/`date -r $image '+%Y-%m-%d %H-%M-%S'`.jpg" -ot "$image" ] && convert "$image" -resize 1024x1024 -interlace Plane -quality 75% "$repertoire/genegal/`date -r $image '+%Y-%m-%d %H-%M-%S'`.jpg"
     # avec identify de ImageMagic, on peut avoir la vraie date originale, mais ça ne fonction pas avec les photos faites avec Android
     # echo '<a href="'../$image'"><img src="'$repertoire/genegal/th_${image##*/}'" title="'`identify -verbose $image | grep DateTimeOriginal`'" /></a>' >> "$sortie"
     # recherche de la date d'un fichier avec find et cut
     # echo '<a href="'../$image'"><img src="'$repertoire/genegal/th_${image##*/}'" title="'`find . -name $image -printf "%t"| cut -d ' ' -f 1-6`'" /></a>' >> "$sortie"
     # recherche de la date d'un fichier avec date
-    echo '<a href="'../$image'"><img src="'$repertoire/genegal/th_${image##*/}'" title="'`date -r $image '+%A%d %B %Y'`'" /></a>' >> "$sortie"
+    echo '<a href="'../$image'"><img src="'$repertoire/genegal/`date -r $image '+%Y-%m-%d %H-%M-%S'`.jpg'" title="'`date -r $image '+%A%d %B %Y'`'" /></a>' >> "$sortie"
     # contient le chemin complet du fichier de l'image
     # echo "$image\n"
     # donne le basename du fichier (sans le répertoire)
