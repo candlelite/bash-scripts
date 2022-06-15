@@ -14,7 +14,7 @@ lister () {
   IFS=’$'\n'’
   # activer l'option case non sensitive de bash
   shopt -s nocaseglob
-  for i in `ls --sort=time -r *.JPG`
+  for i in `ls --sort=time -r *.JPG *.png *.gif *.jpeg`
   do
     echo "Add in img_list : $i"
     #convert "$i" -resize 200x200 "genegal/th_$i"
